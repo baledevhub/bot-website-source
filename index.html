@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bot Developer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --success: #10b981;
+            --code-bg: #1e293b;
+            --code-text: #e2e8f0;
+        }
+        
+        .font-poppins {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .font-vazir {
+            font-family: 'Vazirmatn', sans-serif;
+        }
+        
+        .code-block {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        
+        .cursor {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
+        .tag {
+            color: #e879f9;
+        }
+        
+        .attribute {
+            color: #60a5fa;
+        }
+        
+        .string {
+            color: #34d399;
+        }
+        
+        .comment {
+            color: #94a3b8;
+        }
+        
+        .function {
+            color: #fbbf24;
+        }
+        
+        /* RTL support for Persian */
+        [lang="fa"] {
+            direction: rtl;
+            text-align: right;
+        }
+        
+        [lang="fa"] .ml-auto {
+            margin-left: 0;
+            margin-right: auto;
+        }
+        
+        [lang="fa"] .mr-auto {
+            margin-right: 0;
+            margin-left: auto;
+        }
+        
+        [lang="fa"] .ml-2 {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+        
+        [lang="fa"] .mr-2 {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        
+        [lang="fa"] .space-x-4 > * + * {
+            margin-left: 0;
+            margin-right: 1rem;
+        }
+        
+        [lang="fa"] .space-x-2 > * + * {
+            margin-left: 0;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-200 font-poppins" id="body">
+    <header class="fixed w-full bg-white dark:bg-gray-900 shadow-md dark:shadow-gray-800 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="logo">
+                <span class="text-gray-800 dark:text-white">&lt;</span>DevBot<span class="text-gray-800 dark:text-white">/&gt;</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="theme-toggle" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                    </svg>
+                </button>
+                <button id="lang-toggle" class="px-3 py-1 rounded-md bg-indigo-600 text-white hover:bg-indigo-700 transition-colors">
+                    EN
+                </button>
+                <button class="md:hidden p-2" id="menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+            <nav class="hidden md:flex space-x-6 items-center" id="nav-menu">
+                <a href="#home" class="nav-link text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+                <a href="#about" class="nav-link text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+                <a href="#skills" class="nav-link text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Skills</a>
+                <a href="#projects" class="nav-link text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
+                <a href="#contact" class="nav-link text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+            </nav>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-2">
+                <a href="#home" class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Home</a>
+                <a href="#about" class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">About</a>
+                <a href="#skills" class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Skills</a>
+                <a href="#projects" class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Projects</a>
+                <a href="#contact" class="nav-link py-2 text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400">Contact</a>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="pt-24 pb-16 md:pt-32 md:pb-24">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
+                        <h1 class="text-3xl md:text-5xl font-bold mb-4">
+                            <span class="text-indigo-600 dark:text-indigo-400" id="greeting">Hi, I'm</span>
+                            <span class="block mt-2" id="name">Alex Johnson</span>
+                        </h1>
+                        <h2 class="text-xl md:text-2xl text-gray-600 dark:text-gray-400 mb-6" id="title">
+                            Bot Developer & Automation Specialist
+                        </h2>
+                        <p class="text-gray-700 dark:text-gray-300 mb-8" id="hero-description">
+                            I create intelligent bots for Telegram, Discord, and Bale platforms that enhance user experience and automate workflows. With expertise in multiple programming languages and bot frameworks, I deliver robust solutions tailored to your needs.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#contact" class="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors" id="contact-btn">Contact Me</a>
+                            <a href="#projects" class="px-6 py-3 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white rounded-md hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" id="projects-btn">Projects</a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <div class="w-full max-w-md">
+                            <div class="code-block">
+                                <pre><span class="comment">// Bot Developer Introduction</span>
+<span class="tag">class</span> <span class="function">BotDeveloper</span> {
+    <span class="function">constructor</span>() {
+    <span class="attribute">this</span>.name = <span class="string">"Alex Johnson"</span>;
+    <span class="attribute">this</span>.role = <span class="string">"Bot Developer"</span>;
+    <span class="attribute">this</span>.skills = [
+        <span class="string">"Telegram API"</span>, 
+        <span class="string">"Discord.js"</span>, 
+        <span class="string">"Bale Bot SDK"</span>,
+        <span class="string">"Node.js"</span>, 
+        <span class="string">"Python"</span>
+    ];
+}
+                                        
+<span class="function">sayHello</span>() {
+    <span class="tag">return</span> <span class="string">"Let's build something amazing!"</span>;
+    }
+}
+                                    
+<span class="tag">const</span> developer = <span class="tag">new</span> <span class="function">BotDeveloper</span>();
+developer.sayHello()<span class="cursor">|</span></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- About Section -->
+            <section id="about" class="py-16 bg-gray-100 dark:bg-gray-800">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center" id="about-title">About Me</h2>
+                    <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
+                        <div class="md:w-1/3 flex justify-center">
+                            <img src="/api/placeholder/300/300" alt="Profile" class="rounded-full border-4 border-indigo-500 shadow-lg w-56 h-56 object-cover">
+                        </div>
+                        <div class="md:w-2/3">
+                            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+                                <p class="mb-4 text-gray-700 dark:text-gray-300" id="about-desc-1">
+                                    With over 5 years of experience in bot development, I specialize in creating intelligent, interactive bots for various platforms including Telegram, Discord, and Bale. My passion lies in developing bots that solve real-world problems and enhance user engagement.
+                                </p>
+                                <p class="mb-4 text-gray-700 dark:text-gray-300" id="about-desc-2">
+                                    After completing my Computer Science degree, I've worked with numerous clients ranging from startups to established businesses, helping them automate workflows, engage with their audience, and provide seamless customer support through customized bot solutions.
+                                </p>
+                                <p class="text-gray-700 dark:text-gray-300" id="about-desc-3">
+                                    I'm fluent in multiple programming languages and frameworks, allowing me to choose the best tech stack for each project. My multilingual skills (English and Persian) enable me to develop bots catering to diverse user bases.
+                                </p>
+                                
+                                <div class="mt-6 flex flex-wrap gap-3">
+                                    <div class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-4 py-2 rounded-full text-sm">
+                                        <span id="exp-label">Experience:</span> 5+ <span id="exp-years">years</span>
+                                    </div>
+                                    <div class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-4 py-2 rounded-full text-sm">
+                                        <span id="projects-label">Projects Completed:</span> 50+
+                                    </div>
+                                    <div class="bg-indigo-100 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200 px-4 py-2 rounded-full text-sm">
+                                        <span id="clients-label">Happy Clients:</span> 30+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Skills Section -->
+            <section id="skills" class="py-16">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center" id="skills-title">My Skills</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Bot Development -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                    </svg>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold" id="bot-dev-title">Bot Development</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400" id="bot-dev-desc">
+                                Expert in developing bots for multiple platforms using official APIs and SDKs. Specializing in interactive, AI-powered, and automation bots.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Telegram Bot API</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Discord.js</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Bale Bot SDK</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Backend Development -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
+                                    </svg>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold" id="backend-title">Backend Development</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400" id="backend-desc">
+                                Creating robust backend services for bots with database integration, API management, and scalable architecture.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Node.js</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Python</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">MongoDB</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">REST API</span>
+                            </div>
+                        </div>
+                        
+                        <!-- AI & NLP -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                                    </svg>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold" id="ai-title">AI & Natural Language Processing</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400" id="ai-desc">
+                                Implementing AI-powered features in bots, including natural language understanding, sentiment analysis, and intelligent responses.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">OpenAI</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">NLP</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">TensorFlow</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Automation -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                    </svg>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold" id="automation-title">Workflow Automation</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400" id="automation-desc">
+                                Creating bots that automate repetitive tasks, workflows, and business processes to increase efficiency and reduce human error.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Webhooks</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Cron Jobs</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Integrations</span>
+                            </div>
+                        </div>
+                        
+                        <!-- UI/UX for Bots -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+                                    </svg>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold" id="ui-title">Bot UI/UX Design</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400" id="ui-desc">
+                                Designing intuitive conversation flows and interactive elements that ensure optimal user experience across different bot platforms.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Conversation Design</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Inline Keyboards</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Rich Media</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Deployment & DevOps -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex items-center mb-4">
+                                <div class="w-12 h-12 bg-indigo-100 dark:bg-indigo-900 rounded-lg flex items-center justify-center text-indigo-600 dark:text-indigo-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                                    </svg>
+                                </div>
+                                <h3 class="ml-4 text-xl font-semibold" id="devops-title">Deployment & DevOps</h3>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400" id="devops-desc">
+                                Deploying bots on various cloud platforms with continuous integration, monitoring, and scaling capabilities to ensure 24/7 availability.
+                            </p>
+                            <div class="mt-4 flex flex-wrap gap-2">
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Docker</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">AWS</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">Heroku</span>
+                                <span class="px-3 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-full text-sm">CI/CD</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Progress Bars -->
+                    <div class="mt-12 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-6" id="tech-proficiency">Technical Proficiency</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">Node.js</span>
+                                    <span class="text-gray-700 dark:text-gray-300">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">Python</span>
+                                    <span class="text-gray-700 dark:text-gray-300">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">Telegram Bot API</span>
+                                    <span class="text-gray-700 dark:text-gray-300">98%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">Discord.js</span>
+                                    <span class="text-gray-700 dark:text-gray-300">92%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 92%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">Bale Bot SDK</span>
+                                    <span class="text-gray-700 dark:text-gray-300">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-gray-700 dark:text-gray-300">MongoDB</span>
+                                    <span class="text-gray-700 dark:text-gray-300">88%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2.5">
+                                    <div class="bg-indigo-600 h-2.5 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Projects Section -->
+            <section id="projects" class="py-16 bg-gray-100 dark:bg-gray-800">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center" id="projects-title">Featured Projects</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Project 1 -->
+                        <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                            <img src="/api/placeholder/600/300" alt="E-commerce Assistant Bot" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-xl font-semibold" id="project1-title">E-commerce Assistant Bot</h3>
+                                    <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 rounded-full text-xs">Telegram</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4" id="project1-desc">
+                                    An AI-powered shopping assistant bot for a major retail chain that handles customer inquiries, product searches, and order tracking with natural language processing.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">Node.js</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">Telegram API</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">NLP</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">MongoDB</span>
+                                </div>
+                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium inline-flex items-center">
+                                    <span id="view-details-1">View Details</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 2 -->
+                        <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                            <img src="/api/placeholder/600/300" alt="Community Management Bot" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-xl font-semibold" id="project2-title">Community Management Bot</h3>
+                                    <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-xs">Discord</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4" id="project2-desc">
+                                    A comprehensive Discord bot for community management with moderation tools, custom commands, role management, and event scheduling features.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">JavaScript</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">Discord.js</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">PostgreSQL</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">Redis</span>
+                                </div>
+                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium inline-flex items-center">
+                                    <span id="view-details-2">View Details</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!-- Project 3 -->
+                        <div class="bg-white dark:bg-gray-900 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
+                            <img src="/api/placeholder/600/300" alt="Educational Quiz Bot" class="w-full h-48 object-cover">
+                            <div class="p-6">
+                                <div class="flex items-center justify-between mb-3">
+                                    <h3 class="text-xl font-semibold" id="project3-title">Educational Quiz Bot</h3>
+                                    <span class="px-3 py-1 bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 rounded-full text-xs">Bale</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4" id="project3-desc">
+                                    A bilingual (English/Persian) quiz bot for an educational institution that delivers daily quizzes, tracks student progress, and provides personalized feedback.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-4">
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">Python</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">Bale Bot SDK</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">SQLite</span>
+                                    <span class="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded text-xs">Pandas</span>
+                                </div>
+                                <a href="#" class="text-indigo-600 dark:text-indigo-400 hover:underline font-medium inline-flex items-center">
+                                    <span id="view-details-3">View Details</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 text-center">
+                        <a href="#" class="px-6 py-3 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors inline-flex items-center" id="all-projects-btn">
+                            <span>View All Projects</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Testimonials Section -->
+            <section class="py-16">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center" id="testimonials-title">Client Testimonials</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Testimonial 1 -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex justify-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                </svg>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-center italic mb-6" id="testimonial1">
+                                "Alex developed an exceptional Telegram bot for our online store that increased customer engagement by 40%. The bot's AI capabilities and user-friendly interface have significantly improved our customer service efficiency."
+                            </p>
+                            <div class="text-center">
+                                <p class="font-semibold" id="client1-name">Sarah Johnson</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm" id="client1-title">E-commerce Manager, TechRetail</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex justify-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                </svg>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-center italic mb-6" id="testimonial2">
+                                "The Discord community management bot that Alex built for our gaming community has been a game-changer. It handles moderation, event scheduling, and user engagement flawlessly. Highly recommended for any online community!"
+                            </p>
+                            <div class="text-center">
+                                <p class="font-semibold" id="client2-name">Michael Chen</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm" id="client2-title">Community Lead, GamersUnite</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <div class="flex justify-center mb-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-600 dark:text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                </svg>
+                            </div>
+                            <p class="text-gray-600 dark:text-gray-400 text-center italic mb-6" id="testimonial3">
+                                "Alex created a bilingual educational bot for our language institute that serves both English and Persian-speaking students. The attention to linguistic details and cultural nuances in the bot's interactions is impressive."
+                            </p>
+                            <div class="text-center">
+                                <p class="font-semibold" id="client3-name">Fatemeh Ahmadi</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm" id="client3-title">Director, Polyglot Institute</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact" class="py-16 bg-gray-100 dark:bg-gray-800">
+                <div class="container mx-auto px-4">
+                    <h2 class="text-3xl font-bold mb-8 text-center" id="contact-title">Get In Touch</h2>
+                    
+                    <div class="flex flex-col md:flex-row gap-8">
+                        <!-- Contact Form -->
+                        <div class="md:w-2/3 bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+                            <form>
+                                <div class="mb-4">
+                                    <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2" id="name-label">Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2" id="email-label">Email</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="subject" class="block text-gray-700 dark:text-gray-300 mb-2" id="subject-label">Subject</label>
+                                    <input type="text" id="subject" class="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2" id="message-label">Message</label>
+                                    <textarea id="message" rows="5" class="w-full px-4 py-2 border rounded-md bg-gray-50 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"></textarea>
+                                </div>
+                                
+                                <button type="submit" class="w-full bg-indigo-600 text-white py-3 px-4 rounded-md hover:bg-indigo-700 transition-colors" id="submit-btn">Send Message</button>
+                            </form>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div class="md:w-1/3">
+                            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md mb-6">
+                                <h3 class="text-xl font-semibold mb-4" id="contact-info">Contact Information</h3>
+                                
+                                <div class="space-y-4">
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm" id="email-title">Email</p>
+                                            <a href="mailto:contact@botdeveloper.com" class="text-indigo-600 dark:text-indigo-400 hover:underline">contact@botdeveloper.com</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm" id="phone-title">Phone</p>
+                                            <a href="tel:+1234567890" class="text-indigo-600 dark:text-indigo-400 hover:underline">+1 (234) 567-890</a>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="flex items-start">
+                                        <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 mr-3">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <p class="text-gray-600 dark:text-gray-400 text-sm" id="location-title">Location</p>
+                                            <p class="text-gray-800 dark:text-gray-200" id="location">San Francisco, CA</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold mb-4" id="socials">Social Media</h3>
+                                
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z" />
+                                        </svg>
+                                    </a>
+                                    
+                                    <a href="#" class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.441 16.892c-2.102.144-6.784.144-8.883 0-2.276-.156-2.541-1.27-2.558-4.892.017-3.629.285-4.736 2.558-4.892 2.099-.144 6.782-.144 8.883 0 2.277.156 2.541 1.27 2.559 4.892-.018 3.629-.285 4.736-2.559 4.892zm-6.441-7.234l4.917 2.338-4.917 2.346v-4.684z" />
+                                        </svg>
+                                    </a>
+                                    
+                                    <a href="#" class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.493 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z" />
+                                        </svg>
+                                    </a>
+                                    
+                                    <a href="#" class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                        </svg>
+                                    </a>
+                                    
+                                    <a href="#" class="w-10 h-10 bg-gray-200 dark:bg-gray-700 rounded-full flex items-center justify-center text-indigo-600 dark:text-indigo-400 hover:bg-indigo-100 dark:hover:bg-indigo-900 transition-colors">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M22.05 7.54a4.47 4.47 0 0 0-3.3-1.46 4.53 4.53 0 0 0-4.53 4.53c0 .35.04.7.08 1.05A12.9 12.9 0 0 1 5 6.89a5.1 5.1 0 0 0-.65 2.26c.03 1.6.83 2.99 2.02 3.79a4.3 4.3 0 0 1-2.02-.57v.08a4.55 4.55 0 0 0 3.63 4.44c-.4.08-.8.13-1.21.16l-.81-.08a4.54 4.54 0 0 0 4.2 3.15 9.56 9.56 0 0 1-5.66 1.94l-1.05-.08c2 1.27 4.38 2.02 6.94 2.02 8.3 0 12.86-6.9 12.84-12.85.02-.24 0-.43 0-.65a8.68 8.68 0 0 0 2.26-2.34c-.82.38-1.7.62-2.6.72a4.37 4.37 0 0 0 1.95-2.51c-.84.53-1.81.9-2.83 1.13z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer class="bg-gray-900 text-white py-8">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-4 md:mb-0">
+                        <div class="text-2xl font-bold mb-2" id="footer-logo">
+                            <span class="text-indigo-400">&lt;</span>DevBot<span class="text-indigo-400">/&gt;</span>
+                        </div>
+                        <p class="text-gray-400" id="footer-desc">
+                            Creating intelligent bots for better communication
+                        </p>
+                    </div>
+                    
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="font-semibold mb-3" id="quick-links">Quick Links</h3>
+                        <div class="flex flex-col space-y-2">
+                            <a href="#home" class="text-gray-400 hover:text-white transition-colors" id="home-link">Home</a>
+                            <a href="#about" class="text-gray-400 hover:text-white transition-colors" id="about-link">About</a>
+                            <a href="#skills" class="text-gray-400 hover:text-white transition-colors" id="skills-link">Skills</a>
+                            <a href="#projects" class="text-gray-400 hover:text-white transition-colors" id="projects-link">Projects</a>
+                            <a href="#contact" class="text-gray-400 hover:text-white transition-colors" id="contact-link">Contact</a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="font-semibold mb-3" id="newsletter">Newsletter</h3>
+                        <div class="flex">
+                            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md bg-gray-800 border border-gray-700 text-gray-200 focus:outline-none focus:ring-1 focus:ring-indigo-500" id="newsletter-email">
+                            <button class="bg-indigo-600 px-4 py-2 rounded-r-md hover:bg-indigo-700 transition-colors" id="subscribe-btn">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm mb-4 md:mb-0" id="copyright">
+                        &copy; 2025 Bot Developer. All rights reserved.
+                    </p>
+                    
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm" id="privacy">Privacy Policy</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors text-sm" id="terms">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <!-- Persian translation data -->
+        <script>
+            const translations = {
+                en: {
+                    greeting: "Hi, I'm",
+                    name: "Alex Johnson",
+                    title: "Bot Developer & Automation Specialist",
+                    heroDescription: "I create intelligent bots for Telegram, Discord, and Bale platforms that enhance user experience and automate workflows. With expertise in multiple programming languages and bot frameworks, I deliver robust solutions tailored to your needs.",
+                    contactBtn: "Contact Me",
+                    projectsBtn: "Projects",
+                    
+                    aboutTitle: "About Me",
+                    aboutDesc1: "With over 5 years of experience in bot development, I specialize in creating intelligent, interactive bots for various platforms including Telegram, Discord, and Bale. My passion lies in developing bots that solve real-world problems and enhance user engagement.",
+                    aboutDesc2: "After completing my Computer Science degree, I've worked with numerous clients ranging from startups to established businesses, helping them automate workflows, engage with their audience, and provide seamless customer support through customized bot solutions.",
+                    aboutDesc3: "I'm fluent in multiple programming languages and frameworks, allowing me to choose the best tech stack for each project. My multilingual skills (English and Persian) enable me to develop bots catering to diverse user bases.",
+                    expLabel: "Experience:",
+                    expYears: "years",
+                    projectsLabel: "Projects Completed:",
+                    clientsLabel: "Happy Clients:",
+                    
+                    skillsTitle: "My Skills",
+                    botDevTitle: "Bot Development",
+                    botDevDesc: "Expert in developing bots for multiple platforms using official APIs and SDKs. Specializing in interactive, AI-powered, and automation bots.",
+                    backendTitle: "Backend Development",
+                    backendDesc: "Creating robust backend services for bots with database integration, API management, and scalable architecture.",
+                    aiTitle: "AI & Natural Language Processing",
+                    aiDesc: "Implementing AI-powered features in bots, including natural language understanding, sentiment analysis, and intelligent responses.",
+                    automationTitle: "Workflow Automation",
+                    automationDesc: "Creating bots that automate repetitive tasks, workflows, and business processes to increase efficiency and reduce human error.",
+                    uiTitle: "Bot UI/UX Design",
+                    uiDesc: "Designing intuitive conversation flows and interactive elements that ensure optimal user experience across different bot platforms.",
+                    devopsTitle: "Deployment & DevOps",
+                    devopsDesc: "Deploying bots on various cloud platforms with continuous integration, monitoring, and scaling capabilities to ensure 24/7 availability.",
+                    techProficiency: "Technical Proficiency",
+                    
+                    projectsTitle: "Featured Projects",
+                    project1Title: "E-commerce Assistant Bot",
+                    project1Desc: "An AI-powered shopping assistant bot for a major retail chain that handles customer inquiries, product searches, and order tracking with natural language processing.",
+                    project2Title: "Community Management Bot",
+                    project2Desc: "A comprehensive Discord bot for community management with moderation tools, custom commands, role management, and event scheduling features.",
+                    project3Title: "Educational Quiz Bot",
+                    project3Desc: "A bilingual (English/Persian) quiz bot for an educational institution that delivers daily quizzes, tracks student progress, and provides personalized feedback.",
+                    viewDetails1: "View Details",
+                    viewDetails2: "View Details",
+                    viewDetails3: "View Details",
+                    allProjectsBtn: "View All Projects",
+                    
+                    testimonialsTitle: "Client Testimonials",
+                    testimonial1: "\"Alex developed an exceptional Telegram bot for our online store that increased customer engagement by 40%. The bot's AI capabilities and user-friendly interface have significantly improved our customer service efficiency.\"",
+                    client1Name: "Sarah Johnson",
+                    client1Title: "E-commerce Manager, TechRetail",
+                    testimonial2: "\"The Discord community management bot that Alex built for our gaming community has been a game-changer. It handles moderation, event scheduling, and user engagement flawlessly. Highly recommended for any online community!\"",
+                    client2Name: "Michael Chen",
+                    client2Title: "Community Lead, GamersUnite",
+                    testimonial3: "\"Alex created a bilingual educational bot for our language institute that serves both English and Persian-speaking students. The attention to linguistic details and cultural nuances in the bot's interactions is impressive.\"",
+                    client3Name: "Fatemeh Ahmadi",
+                    client3Title: "Director, Polyglot Institute",
+                    
+                    contactTitle: "Get In Touch",
+                    nameLabel: "Name",
+                    emailLabel: "Email",
+                    subjectLabel: "Subject",
+                    messageLabel: "Message",
+                    submitBtn: "Send Message",
+                    contactInfo: "Contact Information",
+                    emailTitle: "Email",
+                    phoneTitle: "Phone",
+                    locationTitle: "Location",
+                    location: "San Francisco, CA",
+                    socials: "Social Media",
+                    
+                    footerLogo: "<DevBot/>",
+                    footerDesc: "Creating intelligent bots for better communication",
+                    quickLinks: "Quick Links",
+                    homeLink: "Home",
+                    aboutLink: "About",
+                    skillsLink: "Skills",
+                    projectsLink: "Projects",
+                    contactLink: "Contact",
+                    newsletter: "Newsletter",
+                    subscribeBtn: "Subscribe",
+                    copyright: "© 2025 Bot Developer. All rights reserved.",
+                    privacy: "Privacy Policy",
+                    terms: "Terms of Service"
+                },
+                fa: {
+                    greeting: "سلام، من",
+                    name: "علی جانسون",
+                    title: "توسعه دهنده ربات و متخصص اتوماسیون",
+                    heroDescription: "من ربات‌های هوشمند برای پلتفرم‌های تلگرام، دیسکورد و بله می‌سازم که تجربه کاربری را بهبود می‌بخشند و گردش کارها را خودکار می‌کنند. با تخصص در چندین زبان برنامه‌نویسی و فریم‌ورک‌های ربات، راه‌حل‌های قدرتمندی متناسب با نیازهای شما ارائه می‌دهم.",
+                    contactBtn: "تماس با من",
+                    projectsBtn: "پروژه‌ها",
+                    
+                    aboutTitle: "درباره من",
+                    aboutDesc1: "با بیش از ۵ سال تجربه در توسعه ربات، من در ساخت ربات‌های هوشمند و تعاملی برای پلتفرم‌های مختلف از جمله تلگرام، دیسکورد و بله تخصص دارم. اشتیاق من در توسعه ربات‌هایی است که مشکلات دنیای واقعی را حل می‌کنند و تعامل کاربران را بهبود می‌بخشند.",
+                    aboutDesc2: "پس از اتمام مدرک کامپیوتر، با مشتریان متعددی از استارتاپ‌ها تا کسب‌وکارهای تثبیت‌شده همکاری کرده‌ام و به آنها در خودکارسازی گردش کارها، تعامل با مخاطبان و ارائه پشتیبانی مشتری بی‌نقص از طریق راه‌حل‌های ربات سفارشی کمک کرده‌ام.",
+                    aboutDesc3: "من در چندین زبان برنامه‌نویسی و فریم‌ورک تسلط دارم که به من امکان می‌دهد بهترین تکنولوژی را برای هر پروژه انتخاب کنم. مهارت‌های چندزبانه من (انگلیسی و فارسی) به من امکان می‌دهد ربات‌هایی را توسعه دهم که پاسخگوی نیازهای کاربران متنوع باشد.",
+                    expLabel: "تجربه:",
+                    expYears: "سال",
+                    projectsLabel: "پروژه‌های تکمیل شده:",
+                    clientsLabel: "مشتریان راضی:",
+                    
+                    skillsTitle: "مهارت‌های من",
+                    botDevTitle: "توسعه ربات",
+                    botDevDesc: "متخصص در توسعه ربات برای پلتفرم‌های متعدد با استفاده از API‌ها و SDK‌های رسمی. تخصص در ربات‌های تعاملی، مبتنی بر هوش مصنوعی و خودکارسازی.",
+                    backendTitle: "توسعه بک‌اند",
+                    backendDesc: "ایجاد سرویس‌های بک‌اند قدرتمند برای ربات‌ها با یکپارچه‌سازی پایگاه داده، مدیریت API و معماری مقیاس‌پذیر.",
+                    aiTitle: "هوش مصنوعی و پردازش زبان طبیعی",
+                    aiDesc: "پیاده‌سازی ویژگی‌های مبتنی بر هوش مصنوعی در ربات‌ها، از جمله درک زبان طبیعی، تحلیل احساسات و پاسخ‌های هوشمند.",
+                    automationTitle: "خودکارسازی گردش کار",
+                    automationDesc: "ایجاد ربات‌هایی که وظایف تکراری، گردش‌کارها و فرآیندهای کسب‌وکار را خودکار می‌کنند تا کارایی را افزایش داده و خطای انسانی را کاهش دهند.",
+                    uiTitle: "طراحی رابط کاربری ربات",
+                    uiDesc: "طراحی جریان‌های مکالمه شهودی و عناصر تعاملی که تجربه کاربری بهینه را در پلتفرم‌های مختلف ربات تضمین می‌کنند.",
+                    devopsTitle: "استقرار و DevOps",
+                    devopsDesc: "استقرار ربات‌ها در پلتفرم‌های ابری مختلف با یکپارچه‌سازی مداوم، نظارت و قابلیت‌های مقیاس‌پذیری برای اطمینان از دسترسی ۲۴/۷.",
+                    techProficiency: "تسلط فنی",
+                    
+                    projectsTitle: "پروژه‌های برجسته",
+                    project1Title: "ربات دستیار فروشگاه آنلاین",
+                    project1Desc: "یک ربات دستیار خرید مبتنی بر هوش مصنوعی برای یک زنجیره خرده‌فروشی بزرگ که سؤالات مشتریان، جستجوی محصولات و پیگیری سفارشات را با پردازش زبان طبیعی مدیریت می‌کند.",
+                    project2Title: "ربات مدیریت انجمن",
+                    project2Desc: "یک ربات جامع دیسکورد برای مدیریت انجمن با ابزارهای نظارت، دستورات سفارشی، مدیریت نقش و ویژگی‌های برنامه‌ریزی رویداد.",
+                    project3Title: "ربات آموزشی کوئیز",
+                    project3Desc: "یک ربات کوئیز دوزبانه (انگلیسی/فارسی) برای یک موسسه آموزشی که کوئیزهای روزانه ارائه می‌دهد، پیشرفت دانش‌آموزان را پیگیری می‌کند و بازخورد شخصی‌سازی شده ارائه می‌دهد.",
+                    viewDetails1: "مشاهده جزئیات",
+                    viewDetails2: "مشاهده جزئیات",
+                    viewDetails3: "مشاهده جزئیات",
+                    allProjectsBtn: "مشاهده همه پروژه‌ها",
+                    
+                    testimonialsTitle: "نظرات مشتریان",
+                    testimonial1: "\"علی یک ربات تلگرام استثنایی برای فروشگاه آنلاین ما توسعه داد که تعامل مشتریان را ۴۰٪ افزایش داد. قابلیت‌های هوش مصنوعی و رابط کاربری دوستانه ربات، کارایی خدمات مشتری ما را به طور قابل توجهی بهبود بخشیده است.\"",
+                    client1Name: "سارا جانسون",
+                    client1Title: "مدیر تجارت الکترونیک، تک‌ریتیل",
+                    testimonial2: "\"ربات مدیریت انجمن دیسکورد که علی برای جامعه گیمینگ ما ساخت، تحول‌آفرین بوده است. این ربات به طور بی‌نقص مدیریت، برنامه‌ریزی رویدادها و تعامل کاربران را انجام می‌دهد. برای هر انجمن آنلاین کاملاً توصیه می‌شود!\"",
+                    client2Name: "مایکل چن",
+                    client2Title: "مدیر انجمن، گیمرزیونایت",
+                    testimonial3: "\"علی یک ربات آموزشی دوزبانه برای موسسه زبان ما ایجاد کرد که به دانش‌آموزان انگلیسی و فارسی زبان خدمت می‌کند. توجه به جزئیات زبان‌شناختی و ظرافت‌های فرهنگی در تعاملات ربات تحسین‌برانگیز است.\"",
+                    client3Name: "فاطمه احمدی",
+                    client3Title: "مدیر، موسسه پلی‌گلوت",
+                    
+                    contactTitle: "تماس با من",
+                    nameLabel: "نام",
+                    emailLabel: "ایمیل",
+                    subjectLabel: "موضوع",
+                    messageLabel: "پیام",
+                    submitBtn: "ارسال پیام",
+                    contactInfo: "اطلاعات تماس",
+                    emailTitle: "ایمیل",
+                    phoneTitle: "تلفن",
+                    locationTitle: "مکان",
+                    location: "سان فرانسیسکو، کالیفرنیا",
+                    socials: "شبکه‌های اجتماعی",
+                    
+                    footerLogo: "<دِوبات/>",
+                    footerDesc: "ساخت ربات‌های هوشمند برای ارتباط بهتر",
+                    quickLinks: "دسترسی سریع",
+                    homeLink: "خانه",
+                    aboutLink: "درباره من",
+                    skillsLink: "مهارت‌ها",
+                    projectsLink: "پروژه‌ها",
+                    contactLink: "تماس",
+                    newsletter: "خبرنامه",
+                    subscribeBtn: "اشتراک",
+                    copyright: "© ۲۰۲۵ توسعه دهنده ربات. تمام حقوق محفوظ است.",
+                    privacy: "سیاست حفظ حریم خصوصی",
+                    terms: "شرایط استفاده از خدمات"
+                }
+            };
+            
+            // Theme Toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+            });
+            
+            // Mobile Menu Toggle
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Language Toggle
+            const langToggle = document.getElementById('lang-toggle');
+            const body = document.getElementById('body');
+            let currentLang = 'en';
+            
+            langToggle.addEventListener('click', () => {
+                currentLang = currentLang === 'en' ? 'fa' : 'en';
+                updateLanguage(currentLang);
+                langToggle.textContent = currentLang === 'en' ? 'FA' : 'EN';
+                
+                if (currentLang === 'fa') {
+                    body.classList.add('font-vazir');
+                    body.classList.remove('font-poppins');
+                    body.setAttribute('lang', 'fa');
+                } else {
+                    body.classList.add('font-poppins');
+                    body.classList.remove('font-vazir');
+                    body.setAttribute('lang', 'en');
+                }
+            });
+            
+            function updateLanguage(lang) {
+                const elements = document.querySelectorAll('[id]');
+                elements.forEach(element => {
+                    const id = element.id;
+                    if (translations[lang][id]) {
+                        element.textContent = translations[lang][id];
+                    }
+                });
+                
+                // Update placeholders
+                document.getElementById('name').placeholder = lang === 'en' ? 'Your Name' : 'نام شما';
+                document.getElementById('email').placeholder = lang === 'en' ? 'Your Email' : 'ایمیل شما';
+                document.getElementById('subject').placeholder = lang === 'en' ? 'Subject' : 'موضوع';
+                document.getElementById('message').placeholder = lang === 'en' ? 'Your Message' : 'پیام شما';
+                document.getElementById('newsletter-email').placeholder = lang === 'en' ? 'Your email' : 'ایمیل شما';
+            }
+            
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+            
+            // Highlight active nav link on scroll
+            window.addEventListener('scroll', () => {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link');
+                
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('text-indigo-600', 'dark:text-indigo-400');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('text-indigo-600', 'dark:text-indigo-400');
+                    }
+                });
+            });
+            
+            // Form Submission (prevents page reload)
+            const form = document.querySelector('form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert(currentLang === 'en' ? 'Message sent successfully!' : 'پیام با موفقیت ارسال شد!');
+                form.reset();
+            });
+            
+            // Newsletter Subscription
+            const subscribeBtn = document.getElementById('subscribe-btn');
+            subscribeBtn.addEventListener('click', () => {
+                const emailInput = document.getElementById('newsletter-email');
+                if (emailInput.value) {
+                    alert(currentLang === 'en' ? 'Thanks for subscribing!' : 'با تشکر از اشتراک شما!');
+                    emailInput.value = '';
+                }
+            });
+        </script>
+    </body>
+    </html>
